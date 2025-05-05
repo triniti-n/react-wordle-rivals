@@ -1,6 +1,6 @@
-import { MAX_CHALLENGES } from 'constants/settings';
-import { VALID_GUESSES } from 'constants/validGuesses';
-import { WORDS } from 'constants/wordList';
+import { MAX_CHALLENGES } from '../constants/settings';
+import { VALID_GUESSES } from '../constants/validGuesses';
+import { WORDS } from '../constants/wordList';
 
 export const isWordValid = word => {
   return (
@@ -9,7 +9,7 @@ export const isWordValid = word => {
   );
 };
 
-export const getGuessStatuses = guess => {
+export const getGuessStatuses = (guess, solution) => {
   const splitGuess = guess.toLowerCase().split('');
   const splitSolution = solution.split('');
 
@@ -52,8 +52,14 @@ export const getGuessStatuses = guess => {
   return statuses;
 };
 
-export const getStatuses = guesses => {
+export const getStatuses = (guesses, solution) => {
   const charObj = {};
+  
+  // If no guesses or solution, return empty object
+  if (!guesses || !guesses.length || !solution) {
+    return charObj;
+  }
+  
   const splitSolution = solution.toUpperCase().split('');
 
   guesses.forEach(word => {
