@@ -1,0 +1,13 @@
+h3 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 480px) {
+    h3 {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+  }
