@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
 import Header from './components/Header/Header';
 import InfoModal from './components/InfoModal/InfoModal';
-//import Row from './components/Row/Row'
+import Keyboard from './components/Keyboard/Keyboard';
+import Grid from './components/Grid/Grid';
+import useLocalStorage from './hooks/useLocalStorage';
+import './App.css';
 
 function App() {
+  const [boardState, setBoardState] = useLocalStorage('boardState', {
+    guesses: [],
+    solutionIndex: '',
+  });
+
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+  const [isJiggling, setIsJiggling] = useState(false);
+
   
   useEffect(() => {
     // Show info modal after 1 second when app loads
@@ -15,13 +24,29 @@ function App() {
 
   return (
     <div className="App">
-       <Header
+      <Header
         setIsInfoModalOpen={setIsInfoModalOpen}
       />
-      <InfoModal 
-      isOpen={isInfoModalOpen} onClose={() => setIsInfoModalOpen(false)} 
-      //onClose={() => setIsSettingsModalOpen(false)}
+
+      <Grid 
+        guesses={[]}
+        currentGuess={[]}
+        isJiggling={false}
+        setIsJiggling={setIsJiggling}
       />
+
+      <InfoModal 
+        isOpen={isInfoModalOpen} onClose={() => setIsInfoModalOpen(false)} 
+        //onClose={() => setIsSettingsModalOpen(false)}
+      />
+     
+      <Keyboard 
+        onEnter={() => console.log('enter')}
+        onDelete={() => console.log('delete')}
+        onKeyDown={key => console.log(key)}
+        guesses={[]}
+      />
+
     </div>
   );
 }
