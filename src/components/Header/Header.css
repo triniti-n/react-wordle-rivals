@@ -1,25 +1,26 @@
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 h1 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #ff7f50;
+  margin: 0;
 }
 
 button {
-    margin: 0.5rem;
-    cursor: pointer;
-    background: none;
-    outline: none;
-    border: none;
-  }
-  
-  @media screen and (max-width: 480px) {
-    h1 {
-      font-size: 2rem;
-    }
-  }
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.exit-button {
+  color: #d32f2f;
+  font-weight: 500;
+}

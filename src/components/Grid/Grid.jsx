@@ -3,9 +3,11 @@ import classNames from 'classnames';
 import Cell from '../Cell/Cell';
 import { getGuessStatuses } from '../../lib/words';
 import { MAX_CHALLENGES, MAX_WORD_LENGTH } from '../../constants/settings';
-import styles from './Grid.css';
+import './Grid.css';
 
 const Grid = ({ currentGuess, guesses, isJiggling, setIsJiggling, solution }) => {
+  console.log('Grid rendering:', { guesses, currentGuess, solution });
+  
   const empties =
     MAX_CHALLENGES > guesses.length
       ? Array(MAX_CHALLENGES - guesses.length - 1).fill()
@@ -19,7 +21,7 @@ const Grid = ({ currentGuess, guesses, isJiggling, setIsJiggling, solution }) =>
   }, [isJiggling]);
 
   return (
-    <div className={styles.grid}>
+    <div className="grid">
       {guesses.map((guess, i) => (
         <CompletedRow key={i} guess={guess} solution={solution} />
       ))}
@@ -38,8 +40,8 @@ const CurrentRow = ({ guess, isJiggling }) => {
   const cells = [...guess, ...emptyCells];
 
   const classes = classNames({
-    [styles.row]: true,
-    [styles.jiggle]: isJiggling,
+    row: true,
+    jiggle: isJiggling,
   });
 
   return (
@@ -56,7 +58,7 @@ const CompletedRow = ({ guess, solution }) => {
   const statuses = getGuessStatuses(guess, solution);
 
   return (
-    <div className={styles.row}>
+    <div className="row">
       {cells.map((letter, index) => (
         <Cell
           key={index}
@@ -74,7 +76,7 @@ const EmptyRow = () => {
   const cells = Array(MAX_WORD_LENGTH).fill();
 
   return (
-    <div className={styles.row}>
+    <div className="row">
       {cells.map((_, index) => (
         <Cell key={index} />
       ))}

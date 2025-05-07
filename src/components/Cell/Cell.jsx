@@ -1,21 +1,19 @@
-import classNames from 'classnames';
-import styles from './Cell.css';
+import './Cell.css';
 
 const Cell = ({ value, status, position, isCompleted }) => {
-  const classes = classNames({
-    [styles.cell]: true,
-    [styles.absent]: status === 'absent',
-    [styles.present]: status === 'present',
-    [styles.correct]: status === 'correct',
-    [styles.fill]: value,
-    [styles.reveal]: isCompleted,
-  });
+  let cellClass = "cell";
+  
+  if (status === 'absent') cellClass += " absent";
+  if (status === 'present') cellClass += " present";
+  if (status === 'correct') cellClass += " correct";
+  if (value) cellClass += " filled";
+  if (isCompleted) cellClass += " reveal";
 
-  const animationDelay = `${position * 0.35}s`;
+  const animationDelay = position ? `${position * 0.35}s` : '0s';
 
   return (
-    <div className={classes} style={{ animationDelay }}>
-      <span className={styles.letter} style={{ animationDelay }}>
+    <div className={cellClass} style={{ animationDelay }}>
+      <span className="letter" style={{ animationDelay }}>
         {value}
       </span>
     </div>
