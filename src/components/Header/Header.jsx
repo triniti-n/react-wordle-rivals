@@ -1,10 +1,11 @@
-import { BsBarChart, BsGear, BsInfoCircle } from 'react-icons/bs';
+import { BsGear, BsInfoCircle } from 'react-icons/bs';
 import './Header.css';
 
 const Header = ({
   setIsInfoModalOpen,
   setIsStatsModalOpen,
   setIsSettingsModalOpen,
+  setGameOverModalOpen,
 }) => {
   return (
     <header>
@@ -13,9 +14,9 @@ const Header = ({
           <BsInfoCircle size="1.6rem" color="var(--color-icon)" />
         </button>
       </div>
-      <h1>WORDLE RIVALS</h1>
+      <h1>Wordle Rivals</h1>
       <div>
-        <button onClick={() => setIsSettingsModalOpen(true)}>
+        <button onClick={() => setGameOverModalOpen(true)}>
           <BsGear size="1.6rem" color="var(--color-icon)" />
         </button>
       </div>
