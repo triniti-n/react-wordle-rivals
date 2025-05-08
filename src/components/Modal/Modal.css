@@ -16,8 +16,9 @@
   border-radius: 10px;
   padding: 1rem;
   text-align: center;
-  position: relative;
-  max-width: 400px;
+  position: absolute;
+  max-width: 550px;
+  width: 90%;
 }
 
 .close {
@@ -33,13 +34,14 @@
 .title {
   font-size: 1.8rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--color-text-primary);
 }
 
 @media screen and (max-width: 480px) {
   .modal {
     max-width: 350px;
+    width: 95%;
   }
 
   .title {
