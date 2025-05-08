@@ -1,0 +1,10 @@
+.game-over-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.reset-button {
+  margin-top: 1
+}
