@@ -73,9 +73,15 @@ export const getStatuses = (guesses, solution) => {
   return charObj;
 };
 
-// build a set of previously revealed letters - present and correct
-// guess must use correct letters in that space and any other revealed letters
-// also check if all revealed instances of a letter are used (i.e. two C's)
+// Get a random word from the word list
+export const getRandomWord = () => {
+  const randomIndex = Math.floor(Math.random() * WORDS.length);
+  return {
+    solution: WORDS[randomIndex],
+    solutionIndex: randomIndex,
+  };
+};
+
 export const findFirstUnusedReveal = (word, guesses) => {
   if (guesses.length === 0) {
     return false;
@@ -176,19 +182,5 @@ export const generateEmojiGrid = guesses => {
     .join('\n');
 };
 
-export const getWordOfDay = () => {
-  // January 1, 2022 Game Epoch
-  const epochMs = new Date(2022, 0).valueOf();
-  const now = Date.now();
-  const msInDay = 86400000;
-  const index = Math.floor((now - epochMs) / msInDay);
-  const nextday = (index + 1) * msInDay + epochMs;
 
-  return {
-    solution: WORDS[index % WORDS.length],
-    solutionIndex: index,
-    tomorrow: nextday,
-  };
-};
-
-export const { solution, solutionIndex, tomorrow } = getWordOfDay();
+export const { solution, solutionIndex, tomorrow } = getRandomWord();

@@ -1,71 +1,62 @@
 .keyboard {
   display: flex;
   flex-direction: column;
+  gap: 8px;
   align-items: center;
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .row {
   display: flex;
-  margin-bottom: 8px;
-  width: 100%;
   justify-content: center;
+  gap: 0.25rem;
 }
 
 .key {
-  width: 45px;
-  height: 60px;
-  background-color: #d8d8e7;
+  background-color: #d3d6da;
   border: none;
-  border-radius: 8px;
-  color: #333;
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin: 0 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.75rem;
+  flex: 1;
+  max-width: 43px;
+  text-transform: uppercase;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.action {
-  width: auto;
-  min-width: 65px;
-  padding: 0 10px;
+.key:hover {
+  background-color: #c2c5c8;
 }
 
-.delete {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-}
-
-.absent {
+.key.absent {
   background-color: #787c7e;
   color: white;
 }
 
-.present {
+.key.present {
   background-color: #c9b458;
   color: white;
 }
 
-.correct {
+.key.correct {
   background-color: #6aaa64;
   color: white;
 }
 
-@media screen and (max-width: 480px) {
-  .key {
-    width: 32px;
-    height: 50px;
-    font-size: 1rem;
-    margin: 0 2px;
-  }
-  
-  .action {
-    min-width: 50px;
-  }
+.key.action {
+  max-width: 65px;
+  flex: 1.5;
+  background-color: #d3d6da;
+  font-size: 0.85rem;
+  padding: 0.75rem;
+}
+
+.key.action:hover {
+  background-color: #bcbec0;
 }

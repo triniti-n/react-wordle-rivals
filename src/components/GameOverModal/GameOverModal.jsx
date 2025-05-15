@@ -17,7 +17,8 @@ const GameOverModal = ({ isOpen, onClose, isWinner, isAIWinner, solution, onRese
     if (!isGameCompleted) return 'Game is currently paused. Would you like to continue or start a new game?';
     if (isWinner) return 'Congratulations! You guessed the word correctly.';
     if (isAIWinner) return 'The AI guessed the word first.';
-    return `It's a draw! The word was: ${solution}`;
+    // Only show the solution word when the game is completed
+    return `The word was: ${solution}`;
   };
 
   return (
