@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import classNames from 'classnames';
 import { getStatuses } from '../../lib/words';
@@ -18,7 +19,7 @@ const Keyboard = ({ onEnter, onDelete, onKeyDown, guesses }) => {
     return () => {
       window.removeEventListener('keydown', listener);
     };
-  });
+  }, [onDelete, onEnter, onKeyDown]);
 
   const handleClick = key => {
     if (key === 'ENTER') return onEnter();

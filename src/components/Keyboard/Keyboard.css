@@ -1,37 +1,45 @@
 .keyboard {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 8.5px;
   align-items: center;
   width: 100%;
-  max-width: 650px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 1rem;
   box-sizing: border-box;
+  background-color: transparent;
+  margin-top: -2rem;
 }
 
 .row {
   display: flex;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 6px;
+  width: 100%;
+  margin-bottom: 8px;
 }
 
 .key {
-  background-color: #d3d6da;
+  background-color: #e2e2e2;
   border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  height: 55px;
   flex: 1;
-  max-width: 43px;
+  max-width: 45px;
   text-transform: uppercase;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .key:hover {
-  background-color: #c2c5c8;
+  background-color: #d4d4d4;
 }
 
 .key.absent {
@@ -50,13 +58,38 @@
 }
 
 .key.action {
-  max-width: 65px;
-  flex: 1.5;
-  background-color: #d3d6da;
-  font-size: 0.85rem;
-  padding: 0.75rem;
+  background-color: #555;
+  color: white;
+  font-size: 1rem;
+  min-width: 75px;
+  max-width: 100px;
 }
 
 .key.action:hover {
-  background-color: #bcbec0;
+  background-color: #444;
+}
+
+@media screen and (max-width: 600px) {
+  .keyboard {
+    padding: 0.5rem;
+    gap: 5px;
+  }
+  
+  .row {
+    gap: 4px;
+    margin-bottom: 5px;
+  }
+  
+  .key {
+    height: 52px;
+    font-size: 1rem;
+    min-width: 32px;
+    max-width: 45x;
+  }
+  
+  .key.action {
+    font-size: 0.9rem;
+    min-width: 60px;
+    max-width: 80px;
+  }
 }
