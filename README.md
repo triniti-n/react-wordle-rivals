@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Wordle Rivals
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Description
+Wordle Rivals is a two-player word guessing game where you race against the AI to guess the secret word. Both you and the AI have six tries to guess a five-letter word. The first to guess the word correctly wins. If neither guesses correctly in six tries, it's a draw.
 
-## Available Scripts
+## Installation
+```bash
+# Install dependencies
+npm install
 
-In the project directory, you can run:
+# Run project
+npm start
+```
 
-### `npm start`
+## Layout of the Code
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Project Structure
+- `/src`: Contains all source code for the application
+  - `/components`: React components that make up the UI
+  - `/constants`: Configuration values and word lists
+  - `/hooks`: Custom React hooks
+  - `/lib`: Utility functions and game logic
+- `/public`: Static assets and HTML template
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Components (`/src/components`)
+- `Cell`: Individual letter cells that make up the game grid
+- `Grid`: Displays the game board with guessed words
+- `Header`: Top navigation bar with game title and buttons
+- `Keyboard`: Virtual keyboard for input on desktop and mobile
+- `InfoModal`: Instructions modal explaining game rules
+- `GameOverModal`: Displays game results and restart option
+- `Modal`: Reusable modal component used by other modals
+- `PausedModal`: Shown when game is paused
 
-### `npm test`
+#### Game Logic (`/src/lib`)
+- `words.js`: Core word-related functions (validation, status checking)
+- `aiPlayer.js`: AI opponent logic for making intelligent guesses
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Configuration (`/src/constants`)
+- `settings.js`: Game settings like word length and max attempts
+- `validGuesses.js`: List of valid words that can be guessed
+- `wordList.js`: List of potential solution words
 
-### `npm run build`
+#### App Core (`/src`)
+- `App.jsx`: Main application component with game state and logic
+- `index.js`: Entry point that renders the React app
+- `App.css`: Main application styles
+- `index.css`: Global styles
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Custom Hooks (`/src/hooks`)
+- `useLocalStorage.js`: Persists game state in browser storage
+- `useOnClickOutside.js`: Detects clicks outside components (for modals)
