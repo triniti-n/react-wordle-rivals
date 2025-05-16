@@ -14,11 +14,14 @@ const Grid = ({ currentGuess, guesses, isJiggling, setIsJiggling, solution }) =>
       : [];
 
   useEffect(() => {
-    setTimeout(() => {
-      if (isJiggling) setIsJiggling(false);
-    }, 500);
-    // eslint-disable-next-line
-  }, [isJiggling]);
+    if (isJiggling) {
+      const timer = setTimeout(() => {
+        setIsJiggling(false);
+      }, 500);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [isJiggling, setIsJiggling]);
 
   return (
     <div className="grid">

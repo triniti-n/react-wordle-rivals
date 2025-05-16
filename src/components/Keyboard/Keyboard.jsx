@@ -1,11 +1,10 @@
-
 import { useEffect } from 'react';
 import classNames from 'classnames';
 import { getStatuses } from '../../lib/words';
 import './Keyboard.css';
 
-const Keyboard = ({ onEnter, onDelete, onKeyDown, guesses }) => {
-  const charStatuses = getStatuses(guesses);
+const Keyboard = ({ onEnter, onDelete, onKeyDown, guesses, solution }) => {
+  const charStatuses = getStatuses(guesses, solution);
 
   useEffect(() => {
     const listener = e => {
@@ -30,7 +29,7 @@ const Keyboard = ({ onEnter, onDelete, onKeyDown, guesses }) => {
 
   return (
     <div className="keyboard">
-      <div className="row">
+      <div className="keyboard-row">
         {['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'].map(char => (
           <Key
             key={char}
@@ -40,7 +39,7 @@ const Keyboard = ({ onEnter, onDelete, onKeyDown, guesses }) => {
           />
         ))}
       </div>
-      <div className="row">
+      <div className="keyboard-row">
         {['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'].map(char => (
           <Key
             key={char}
@@ -50,7 +49,7 @@ const Keyboard = ({ onEnter, onDelete, onKeyDown, guesses }) => {
           />
         ))}
       </div>
-      <div className="row">
+      <div className="keyboard-row">
         <Key value="DELETE" onClick={handleClick} status="action" />
         {['Z', 'X', 'C', 'V', 'B', 'N', 'M'].map(char => (
           <Key

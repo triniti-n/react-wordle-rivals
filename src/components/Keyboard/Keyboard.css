@@ -1,45 +1,43 @@
 .keyboard {
   display: flex;
   flex-direction: column;
-  gap: 8.5px;
+  gap: 8px;
   align-items: center;
   width: 100%;
-  max-width: 800px;
+  max-width: 650px;
   margin: 0 auto;
   padding: 1rem;
   box-sizing: border-box;
-  background-color: transparent;
-  margin-top: -2rem;
+  background-color: #f9f9f9;
 }
 
-.row {
+.keyboard-row {
   display: flex;
   justify-content: center;
   gap: 6px;
   width: 100%;
-  margin-bottom: 8px;
 }
 
 .key {
-  background-color: #e2e2e2;
+  background-color: #e6e6e6;
   border: none;
-  border-radius: 6px;
-  font-weight: 600;
+  border-radius: 8px;
+  font-weight: bold;
   font-size: 1.2rem;
-  height: 55px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 1;
-  max-width: 45px;
   text-transform: uppercase;
   cursor: pointer;
   transition: background-color 0.2s ease;
   color: #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .key:hover {
-  background-color: #d4d4d4;
+  background-color: #d1d1d1;
 }
 
 .key.absent {
@@ -61,35 +59,52 @@
   background-color: #555;
   color: white;
   font-size: 1rem;
-  min-width: 75px;
-  max-width: 100px;
+  min-width: 70px;
 }
 
 .key.action:hover {
   background-color: #444;
 }
 
-@media screen and (max-width: 600px) {
+/* Control grid layout directly */
+.keyboard-row:nth-child(1) {
+  /* First row layout */
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 6px;
+}
+
+.keyboard-row:nth-child(2) {
+  /* Second row layout */
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 6px;
+}
+
+.keyboard-row:nth-child(3) {
+  /* Third row layout with action buttons */
+  display: grid;
+  grid-template-columns: 1.5fr repeat(7, 1fr) 1.5fr;
+  gap: 6px;
+}
+
+@media screen and (max-width: 480px) {
   .keyboard {
     padding: 0.5rem;
-    gap: 5px;
+    gap: 6px;
   }
   
-  .row {
+  .keyboard-row {
     gap: 4px;
-    margin-bottom: 5px;
   }
   
   .key {
-    height: 52px;
+    height: 50px;
+    width: 40px;
     font-size: 1rem;
-    min-width: 32px;
-    max-width: 45x;
   }
   
   .key.action {
     font-size: 0.9rem;
-    min-width: 60px;
-    max-width: 80px;
   }
 }

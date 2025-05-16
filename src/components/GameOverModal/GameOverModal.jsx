@@ -3,7 +3,6 @@ import Modal from '../Modal/Modal';
 import './GameOverModal.css';
 
 const GameOverModal = ({ isOpen, onClose, isWinner, isAIWinner, solution, onReset }) => {
-  // Game is completed if someone won or if we reached max attempts (solution exists but no winner)
   const isGameCompleted = isWinner || isAIWinner || (solution && !isWinner && !isAIWinner);
   
   const getTitle = () => {
@@ -17,7 +16,6 @@ const GameOverModal = ({ isOpen, onClose, isWinner, isAIWinner, solution, onRese
     if (!isGameCompleted) return 'Game is currently paused. Would you like to continue or start a new game?';
     if (isWinner) return 'Congratulations! You guessed the word correctly.';
     if (isAIWinner) return 'The AI guessed the word first.';
-    // Only show the solution word when the game is completed
     return `The word was: ${solution}`;
   };
 

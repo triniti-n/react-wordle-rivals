@@ -12,15 +12,12 @@ import { getAIGuess } from './lib/aiPlayer';
 
 function App() {
   const [isGameOverModalOpen, setIsGameOverModalOpen] = useState(false);
-  // Remove unused variable
-  // const [isModalFromSettings, setIsModalFromSettings] = useState(false);
   
-  // Generate a random solution when the app first loads
+  // Generate a random solution 
   const [currentSolution, setCurrentSolution] = useState(() => {
     return getRandomWord();
   });
   
-  // Use the current solution state
   const { solution, solutionIndex } = currentSolution;
   
   const [boardState, setBoardState] = useLocalStorage('boardState', {
@@ -57,7 +54,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => setIsInfoModalOpen(true), 1000);
     console.log("App mounted, solution:", solution);
-  }, [solution]); // Add solution to dependency array
+  }, [solution]);
   
   useEffect(() => {
     if (guesses.length > 0 && guesses.length > guesses2.length && !isGameWon2 && !isGameLost2) {
@@ -173,10 +170,8 @@ function App() {
   
   useEffect(() => {
     if (isGameWon) {
-      // setIsModalFromSettings(false);
       setIsGameOverModalOpen(true);
     } else if (isGameLost || isGameWon2 || isGameLost2) {
-      // setIsModalFromSettings(false);
       setTimeout(() => setIsGameOverModalOpen(true), 1500);
     }
   }, [isGameWon, isGameLost, isGameWon2, isGameLost2]);
@@ -186,7 +181,6 @@ function App() {
       <Header
         setIsInfoModalOpen={setIsInfoModalOpen}
         setGameOverModalOpen={() => {
-          // setIsModalFromSettings(true);
           setIsGameOverModalOpen(true);
         }}
       />
@@ -198,7 +192,6 @@ function App() {
         isOpen={isGameOverModalOpen}
         onClose={() => {
           setIsGameOverModalOpen(false);
-          // setIsModalFromSettings(false);
         }}
         isWinner={isGameWon}
         isAIWinner={isGameWon2}
